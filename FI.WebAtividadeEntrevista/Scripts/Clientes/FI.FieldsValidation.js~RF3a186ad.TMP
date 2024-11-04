@@ -1,0 +1,10 @@
+﻿function mascaraCPF(input) {
+    debugger;
+    let cpf = input.value.replace(/\D/g, ''); // Remove todos os caracteres não numéricos
+
+    if (cpf.length > 3) cpf = cpf.slice(0, 3) + '.' + cpf.slice(3);
+    if (cpf.length > 7) cpf = cpf.slice(0, 7) + '.' + cpf.slice(7);
+    if (cpf.length > 11) cpf = cpf.slice(0, 11) + '-' + cpf.slice(11, 13);
+
+    input.value = cpf;
+}

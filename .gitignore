@@ -1,0 +1,5 @@
+ECHO est  ativado.
+# Ignorar arquivos da IDE
+.idea/
+.vs/
+*.vsidx

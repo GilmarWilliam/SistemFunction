@@ -1,0 +1,4 @@
+﻿function abrirModal() {
+    debugger;
+    $('#beneficiariosModal').modal('show');
+}
