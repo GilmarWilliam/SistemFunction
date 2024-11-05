@@ -105,7 +105,7 @@ namespace WebAtividadeEntrevista.Controllers
             return View(model);
         }
 
-        [HttpDelete]
+        [HttpPost]
         public JsonResult Excluir(long id)
         {
             BoBeneficiarios bo = new BoBeneficiarios();

@@ -91,12 +91,33 @@
 
     // Função para excluir um item do grid
     $('#grid').on('click', '.btnExcluir', function () {
+        var id = obj.Beneficiarios.find(x => x.CPF == $(this).closest('tr').find('td:eq(0)').text()).Id;
+
         $(this).closest('tr').remove();
 
         // Oculta o grid se não houver mais linhas na tabela
         if ($('#grid tbody tr').length === 0) {
             $('#gridContainer').hide();
         }
+
+        $.ajax({
+            url: '/Beneficiarios/Excluir',
+            method: "POST",
+            data: { "id": id },
+            error:
+                function (r) {
+                    if (r.status == 400)
+                        ModalDialog("Ocorreu um erro", r.responseJSON);
+                    else if (r.status == 500)
+                        ModalDialog("Ocorreu um erro", "Ocorreu um erro interno no servidor.");
+                },
+            success:
+                function (r) {
+                    ModalDialog("Sucesso!", r)
+                    $("#formCadastro")[0].reset();
+                }
+        });
+
     });
 });
 
